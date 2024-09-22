@@ -1,0 +1,56 @@
+app-name: template                                              # env: app_name
+app-version: local                                              # env: app_version
+prom-prefix: prom_prefix
+env: LOCAL                                                      # env: env
+instance-id:                                                    # sets-from-code
+
+http:
+  port: 8080
+  read-timeout: 40s
+  write-timeout: 40s
+  idle-timeout: 40s
+
+db:
+  enabled: true   
+  host: localhost                                               # env: db_host
+  port: "5432"                                                  # env: db_port
+  database: db                                                  # env: db_database
+  schema: schema_                                                  # env: db_schema
+  username: postgres                                            # env-secret: db_username
+  password: postgres                                            # env-secret: db_password
+  scheme: postgres
+  driver: pgx
+  failover-host: ""
+  max-idle-conns: 10
+  max-open-conns: 10
+  conn-max-lifetime: 5m
+  ssl-mode: true
+
+
+schedules:
+  persist: "0 5 1 * * *"                                          # env: schedule_persist
+
+http-client:
+  timeout: 40s
+
+api:
+  url: http://localhost:8093                                      # env: api_url
+  path: /api/smth
+
+
+
+logger:
+  logger-telegram:
+    enabled: false                                                # env: telegram_enabled
+    level: ERROR                                                  # env: telegram_level
+    target-chat-id: -77777777777                                  # env: telegram_chat_id
+    bot-api-token:                                                # env-secret: bot_api_token
+  logger-std:
+    enabled: false                                                 # env: std_enabled
+    level: DEBUG                                                  # env: std_level
+    log-file: /tmp/template.log
+    stdout: true
+  logger-slog:
+    enabled: true                                                 # env: slog_enabled
+    level: DEBUG                                                  # env: slog_level
+    json: false                                                   # env: slog_json

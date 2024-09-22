@@ -1,0 +1,8 @@
+run_*.sh
+.vscode
+.idea
+openapi.yaml
+openapi.json
+*.env
+docker-compose.yml
+api_res.json

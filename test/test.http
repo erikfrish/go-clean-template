@@ -1,0 +1,14 @@
+@apil=http://localhost:8080
+
+
+###
+GET {{apil}}/api/version
+###
+GET {{apil}}/api/utc
+###
+GET {{apil}}/api/live
+###
+GET {{apil}}/api/ready
+###
+GET {{apil}}/metrics
+
